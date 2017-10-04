@@ -14,6 +14,8 @@ import { IPnPControlsWebPartProps } from './IPnPControlsWebPartProps';
 
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 import { PropertyFieldTermPicker } from '@pnp/spfx-property-controls/lib/PropertyFieldTermPicker';
+import { PropertyFieldDateTimePicker, DateConvention, TimeConvention } from '@pnp/spfx-property-controls/lib/PropertyFieldDateTimePicker';
+
 
 export default class PnPControlsWebPart extends BaseClientSideWebPart<IPnPControlsWebPartProps> {
 
@@ -79,6 +81,17 @@ export default class PnPControlsWebPart extends BaseClientSideWebPart<IPnPContro
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'termSetsPickerFieldId'
+                }),
+                PropertyFieldDateTimePicker('datetime', {
+                  label: 'Select the date and time',
+                  initialDate: this.properties.datetime,
+                  dateConvention: DateConvention.DateTime,
+                  timeConvention: TimeConvention.Hours12,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  key: 'dateTimeFieldId'
                 })
               ]
             }
